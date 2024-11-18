@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { students } from './StudentsDb';
+import StudentTable from './Components/StudentTable.';
+import StudentProfile from './Components/StudentProfile';
 
-function App() {
+const App = () => {
+  const [selectedStudent, setSelectedStudent] = useState(students[0]);
+  const [fontSize, setFontSize] = useState("16px");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div>
+        <button onClick={() => setFontSize("16px")}>Small</button>
+        <button onClick={() => setFontSize("20px")}>Medium</button>
+        <button onClick={() => setFontSize("24px")}>Large</button>
+      </div>
+      <div className="table-section" style={{ fontSize }}>
+        <StudentTable students={students} onSelect={setSelectedStudent} />
+      </div>
+      <div className="profile-section" style={{ fontSize }}>
+        <StudentProfile student={selectedStudent} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
