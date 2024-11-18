@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { students } from './StudentsDb';
-import StudentTable from './Components/StudentTable.';
+import StudentTable from './Components/StudentTable';
 import StudentProfile from './Components/StudentProfile';
 
 const App = () => {
